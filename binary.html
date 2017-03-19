@@ -4,7 +4,7 @@
     </head>
     <body>
         <h1>Binary Search</h1>
-        <iframe width="800" height="500" frameborder="0" 
+        <iframe width="1200" height="600" frameborder="0" 
           src="https://pythontutor.com/iframe-embed.html#code=def%20binarySearch%28alist,%20item%29%3A%0A%20%20%20%20first%20%3D%200%0A%20%20%20%20last%20%3D%20len%28alist%29-1%0A%20%20%20%20found%20%3D%20False%0A%20%20%20%20while%20first%3C%3Dlast%20and%20not%20found%3A%0A%20%20%20%20%20%20%20%20midpoint%20%3D%20%28first%20%2B%20last%29//2%0A%20%20%20%20%20%20%20%20if%20alist%5Bmidpoint%5D%20%3D%3D%20item%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20found%20%3D%20True%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20item%20%3C%20alist%5Bmidpoint%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20last%20%3D%20midpoint-1%0A%20%20%20%20%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20first%20%3D%20midpoint%2B1%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20return%20found%0A%20%20%20%20%0Atestlist%20%3D%20%5B0,%201,%202,%208,%2013,%2017,%2019,%2032,%2042,%5D%0Aprint%28binarySearch%28testlist,%203%29%29%0Aprint%28binarySearch%28testlist,%2013%29%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> 
         </iframe>
     </body>
