@@ -19,9 +19,9 @@
    
         <script type="text/javascript">
               var map;
-                          var infowindow = null;
-
+              var infowindow = null;
               var my_e;  // global variabel
+
               function initMap() {
                     google.maps.visualRefresh = true;
                     var mapOptions = {
@@ -39,7 +39,7 @@
                             infowindow.close();
                         
                         infowindow = new google.maps.InfoWindow({
-                            content: '<h6 style="color:red">Belajar menampilkan posisi koordinat:</h6><hr><b>Latitude : </b>' + e.latLng.lat() + '<br><b>Longitude: </b>' + e.latLng.lng(),
+                            content: '<b>Latitude : </b>' + e.latLng.lat() + '<br><b>Longitude: </b>' + e.latLng.lng(), 
                             position: e.latLng
                         });
                         infowindow.open(map); 
@@ -70,7 +70,7 @@
     <body>                 
         <div class="container">
 		   <div class="row">
-		   		<div class="col-md-12"><h1>Aplikasi GIS Sederhana</h1></div>
+		   		<div class="col-md-12"><h2>Aplikasi GIS Sederhana: UMS Info</h2></div>
 		   </div> 	           	
            <div class="row">
                <div id="mapDiv" class="col-md-12" style="height:200px;"></div>
