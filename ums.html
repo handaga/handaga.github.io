@@ -1,0 +1,97 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- Include Google Maps JS API -->
+        <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtS_6mlBUfmxGrmePDkeg3iRS0cgVHUXk&sensor=false">
+        </script>
+        <style type="text/css">
+              html { height: 100% }
+              body { height: 100%; margin: 0; }
+              #mapDiv { width: 75%; height: 100%; }
+        </style>
+   
+        <script type="text/javascript">
+              var map;
+                          var infowindow = null;
+
+              var my_e;  // global variabel
+              function initMap() {
+                    google.maps.visualRefresh = true;
+                    var mapOptions = {
+                          center: new google.maps.LatLng(-7.556696005490046, 110.7689666748046),
+                          zoom: 14,
+                          mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    var mapElement = document.getElementById('mapDiv');
+                    map = new google.maps.Map(mapElement, mapOptions);
+
+/*
+                    if (navigator.geolocation) {
+                    	navigator.geolocation.getCurrentPosition( function(position) {
+
+                        console.log(position);
+
+                    		var lat = position.coords.latitude;
+                    		var lng = position.coords.longitude;
+                    		var devCenter =  new google.maps.LatLng(lat, lng);
+
+                        console.log(devCenter);
+
+                    		map.setCenter(devCenter);
+                    		map.setZoom(24);
+                    		
+                        console.log(lat + " , " + lng);
+                    	
+                      });
+                    }
+*/
+
+                    google.maps.event.addListener(map, 'click',  function(e) {
+                    	if (infowindow != null)
+                            infowindow.close();
+                        
+                        infowindow = new google.maps.InfoWindow({
+                            content: '<h6 style="color:red">Belajar menampilkan posisi koordinat:</h6><hr><b>Latitude : </b>' + e.latLng.lat() + '<br><b>Longitude: </b>' + e.latLng.lng(),
+                            position: e.latLng
+                        });
+                        infowindow.open(map); 
+                    });
+
+                    google.maps.event.addListener(map, 'mousemove',  function(e) {
+
+						document.getElementById('info').innerHTML = 'Lat: ' + e.latLng.lat() + '<br><b>Longitude: </b>' + e.latLng.lng();
+
+                    });
+
+              }
+
+              google.maps.event.addDomListener(window, 'load', initMap);
+        </script>
+    </head>
+    <body>
+        <div id="mapDiv"></div> 
+        <div id="info">
+
+           Informasi:
+           Latitude:
+           Longitude:
+
+         </div>
+        <div class="container">
+           <div class="row">
+               <div class="col-md-8"></div>
+               <div class="col-md-4">Info</div>
+           </div>
+        </div>
+    </body>
+</html>
+
