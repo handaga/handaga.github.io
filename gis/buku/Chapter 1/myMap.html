@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNRq0VgJa07bagdad6Ycq_xwTaPs0BG74">
+        </script>
+
+   		<style type="text/css">
+            html { height: 100% }
+            body { height: 100%; margin: 0; }
+            #mymap { width: 500px; height: 200px; }
+        </style>
+
+
+
+		<script  type="text/javascript">			
+			var map;  
+			function initMap() {
+				google.maps.visualRefresh = true;
+				var mapOptions = {
+					center: new google.maps.LatLng(-7.55,110.81),
+					zoom: 5,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+				var mapElement = document.getElementById('mymap');            
+				map = new google.maps.Map(mapElement, mapOptions);
+			}
+			google.maps.event.addDomListener(window, 'load', initMap);		
+		</script>
+
+	</head>
+	<body>
+		<h1>Belajar menampilkan peta dari gMap</h1>
+		<div id="mymap"></div>		
+	</body>
+
+</html>

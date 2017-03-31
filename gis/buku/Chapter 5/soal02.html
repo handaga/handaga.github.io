@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtS_6mlBUfmxGrmePDkeg3iRS0cgVHUXk&sensor=false">
+        </script>
+        <style type="text/css">
+              #mapDiv { width: 800px; height: 500px; }
+        </style>
+        <script type="text/javascript">
+              var map;
+              var infowindow = null;
+              function initMap() {
+                    google.maps.visualRefresh = true;
+                    var mapOptions = {
+                          center: new google.maps.LatLng(39.9078, 32.8252),
+                          zoom: 10,
+                          mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    var mapElement = document.getElementById('mapDiv');
+                    map = new google.maps.Map(mapElement, mapOptions);
+                    google.maps.event.addListener(map, 'click',  function(e) {
+                        if (infowindow != null)
+                            infowindow.close();
+                        infowindow = new google.maps.InfoWindow({
+                            content: 'Latitude:'+ e.latLng.lat()+'Longitude: '+e.latLng.lng(),
+                            position: e.latLng
+                        });
+                        infowindow.open(map); 
+                        $.ajax({
+                          data: {lat: e.latLng.lat(),lng: e.latLng.lng()},
+                          url: 'http://localhost/gis/simpan_lokasi.php',
+                          success: function(response) {
+                              alert('simpan data successfull...');
+                          }
+                        });
+                    });
+              }
+              google.maps.event.addDomListener(window, 'load', initMap);
+        </script>
+    </head>
+    <body>
+        <b>Chapter 5 - Getting Coordinates of a mouse click</b>
+        <div id="mapDiv"></div>
+    </body>
+</html>

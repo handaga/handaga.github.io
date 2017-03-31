@@ -1,0 +1,46 @@
+<!DOCTYPE  html>
+<html>
+	<head>
+		<!-- Memanggil pustaka Google Map -->
+		<SCRIPT src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOR_aM5t0p5I3FTuCWefifxjtl5fPZIq0"></SCRIPT>
+		
+		<!-- CSS Untuk mengatur ukuran Peta -->
+		<style type="text/css">
+		              #mapDiv { 
+					width: 800px; 
+					height: 500px;
+			  }
+		</style>
+		
+		<!-- membuat script untuk menampilkan peta -->
+		<SCRIPT>
+		           //variabel GLOBAL
+			var  map; //langsung di eksekusi oleh browser  
+			function initMap() {
+			    //dieksekusi jika nama fungsi di panggil
+				// mengatur opsi map 
+				var mapOptions = {
+				//lokasi awal yang akan di tampilkan di tengah layar
+					center: new google.maps.LatLng(-7.9078, 110.8252),
+					zoom: 22,  // 1 s/d 21
+				      mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				  // variabel utk mengontrol elemen div
+				 var mapElement = document.getElementById('mapDiv');
+				// proses membuat peta dan meletakannya pada elemen div
+				 map = new google.maps.Map(mapElement, mapOptions);
+				
+			}
+			// menampilkan peta, pada saat dokumen html di // LOAD dalam screen browser
+			// panggil fungsi initMap() pada saat dokumen di load dalam screen
+			google.maps.event.addDomListener(window, 'load', initMap);
+			
+		</SCRIPT>
+		
+	</head>
+	<body>
+	        <h1>Belajar menampilkan peta dengan Google Map v3 </h1>
+		<!-- lokasi untuk menampilkan peta -->
+		<div id="mapDiv"></div>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+
+
+<!doctype html>
+<html>
+<head>
+
+<script>
+//Defining context menu functions
+              function zoomIn() {
+                  map.setZoom(map.getZoom() + 1);
+              }
+
+              function zoomOut() {
+                  map.setZoom(map.getZoom() - 1);
+              }
+
+              function createMarker() {
+                  var marker = new google.maps.Marker({
+                      position: lastCoordinate,
+                      map: map,
+                      title: 'Random Marker'
+                  });
+              }
+</script>
+
+</head>
+<body>
+<a href="javascript:createMarker()">Create Marker Here</a><br>
+<a href="javascript:zoomIn()">Zoom In</a><br>
+<a href="javascript:zoomOut()">Zoom Out</a><br>
+</body>

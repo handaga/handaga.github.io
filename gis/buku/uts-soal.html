@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+        <style type="text/css">
+              #mapDiv {width:800px;height:500px;top:20px;}
+        </style>
+        <script type="text/javascript">
+              var map;
+              function initMap () {
+                    google.maps.visualRefresh = true;
+                    var mapOptions = {
+                          center: new google.maps.LatLng(LATITUDE, LONGITUDE),
+                          zoom: 10,
+                          mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    };
+                    var mapElement = document.getElementById('mapDiv');
+                    map = new google.maps.Map(mapElement, mapOptions);
+              }
+
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition( function(position) {
+                  console.log(position);
+                  var lat = position.coords.latitude;
+                  var lng = position.coords.longitude;
+                  var devCenter =  new google.maps.LatLng(lat, lng);
+                  map.setCenter(devCenter);
+                  map.setZoom(24);
+                });
+              }
+
+              google.maps.event.addListener(map, 'click',  function(e) {
+                  if (infowindow != null)
+                      infowindow.close();
+                  infowindow = new google.maps.InfoWindow({
+                      content: '<b>Latitude : </b>' + e.latLng.lat() + 
+                          '<br><b>Longitude: </b>' + e.latLng.lng(),
+                      position: e.latLng
+                  });
+                  infowindow.open(map); 
+              });
+
+              google.maps.event.addDomListener(window, 'load', initMap);  
+        </script>
+    </head>
+    <body>
+        <b>Belajar Google Map</b><p />
+        <div id="mapDiv"></div>
+        <div id="Koordinat">
+          <label>Lokasi:
+            <input type="text" name="lokasi" value="" /> 
+          </label>
+        </div>
+    </body>
+</html>

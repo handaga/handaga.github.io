@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Include Google Maps JS API -->
+        <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNRq0VgJa07bagdad6Ycq_xwTaPs0BG74&sensor=false">
+        </script>
+        <style type="text/css">
+              html { height: 100% }body { height: 100%; margin: 5; }#mapDiv { width: 800px; height: 500px; }
+        </style>
+        <script type="text/javascript">
+              var map;
+              var areaCoordinates = [
+                  [40.0192,32.6953],[39.9434,32.5854],[39.7536,32.6898],[39.8465,32.8106],
+                  [39.9139,33.0084],[40.0318,32.9260],[40.0402,32.7832],[40.0192,32.6953]
+              ];
+              function addPolygon () {
+                  var pointCount = areaCoordinates.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(areaCoordinates[i][0], areaCoordinates[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000', strokeOpacity: 0.9,
+                      strokeWeight: 0, fillColor: '#00FF00', fillOpacity: 0.8
+                  }
+                  var polygon = new google.maps.Polygon(polygonOptions);
+                  polygon.setMap(map);
+              }
+              function initMap() {
+                    google.maps.visualRefresh = true;
+                    var mapOptions = {
+                          center: new google.maps.LatLng(39.9046, 32.75926),
+                          zoom: 10,
+                          mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    var mapElement = document.getElementById('mapDiv');
+                    map = new google.maps.Map(mapElement, mapOptions);
+                    addPolygon();
+              }
+              google.maps.event.addDomListener(window, 'load', initMap);
+        </script>
+    </head>
+    <body>
+        <b>Chapter 3 - Adding Polygons</b><br/>
+        <div id="mapDiv"></div>
+    </body>
+</html>

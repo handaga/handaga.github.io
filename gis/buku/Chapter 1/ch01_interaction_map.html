@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Include Google Maps JS API -->
+
+        <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNRq0VgJa07bagdad6Ycq_xwTaPs0BG74&sensor=false">
+        </script>
+        
+        <style type="text/css">
+              #mapDiv { width: 800px; height: 500px; }
+        </style>
+        <!-- Map creation is here -->
+        <script type="text/javascript" src="js/my.js">
+        </script>
+    </head>
+    <body>
+        <b>Chapter 1 - Interaction Map</b><br/>
+        <input id="btnZoomToIst"  type="button" value="Zoom To Istanbul">
+        <input id="btnZoomToStr" type="button" value="Zoom To Street Level">
+        <input id="btnDisableDrag" type="button" value="Disable Drag">
+        <input id="btnMaxZoom" type="button" value="Set Max Zoom to 12">
+        <input id="btnMinZoom" type="button" value="Set Min Zoom to 5">
+        <input id="btnChangeUI" type="button" value="Change UI">
+        <input id="btnDisableScroll" type="button" value="Disable Scroll Zoom">
+        <div id="mapDiv"></div>
+    </body>
+</html>
